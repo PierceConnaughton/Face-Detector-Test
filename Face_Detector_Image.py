@@ -1,5 +1,7 @@
-#import the ai face detector image
+#import the ai face detector library
 import cv2
+
+from random import randrange
 
 # Load pre-trained data on face frontals from opencv, 
 # Classifier is a detector eg: detect faces
@@ -24,9 +26,10 @@ print(face_coordinates)
 
 # Draw a rectangle around the face
 # for each face found in the image
-# so first get the image, then takes upper left hand coordinate, then the upper right hand coordinate, then the color, then how thick the rectangle is
+# so first get the image, then takes upper left hand coordinate, then the upper right hand coordinate, 
+# then the color randrage used to get different color for each face border, then how thick the rectangle is
 for (x, y, w, h) in face_coordinates:
-    cv2.rectangle(img, (x, y), (x + w, y + h), (0,0,0), 2)
+    cv2.rectangle(img, (x, y), (x + w, y + h), (randrange(256),randrange(256),randrange(256)), 2)
 
 #imshow function = image show
 cv2.imshow('Face Detector', img)
@@ -34,4 +37,3 @@ cv2.imshow('Face Detector', img)
 # Wait until a key is pressed.
 cv2.waitKey()
 
-print("Code Completed")
